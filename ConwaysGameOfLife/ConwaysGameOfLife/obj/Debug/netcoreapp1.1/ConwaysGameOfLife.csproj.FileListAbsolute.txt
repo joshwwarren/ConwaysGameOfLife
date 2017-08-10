@@ -1,9 +1,0 @@
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\netcoreapp1.1\ConwaysGameOfLife.deps.json
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\netcoreapp1.1\ConwaysGameOfLife.runtimeconfig.json
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\netcoreapp1.1\ConwaysGameOfLife.runtimeconfig.dev.json
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\netcoreapp1.1\ConwaysGameOfLife.dll
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\netcoreapp1.1\ConwaysGameOfLife.pdb
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\netcoreapp1.1\ConwaysGameOfLife.csprojResolveAssemblyReference.cache
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\netcoreapp1.1\ConwaysGameOfLife.AssemblyInfo.cs
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\netcoreapp1.1\ConwaysGameOfLife.dll
-C:\Personal\ConwaysGameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\netcoreapp1.1\ConwaysGameOfLife.pdb
