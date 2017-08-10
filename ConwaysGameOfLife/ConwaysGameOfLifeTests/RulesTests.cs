@@ -18,7 +18,7 @@ namespace ConwaysGameOfLifeTests
         }
 
         [Test]
-        public void It_should_die_if_it_has_1_neighbor()
+        public void It_should_die_if_it_has_1_neighbors()
         {
             
         }
