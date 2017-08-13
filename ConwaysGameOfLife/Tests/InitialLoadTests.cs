@@ -1,8 +1,10 @@
-﻿using NUnit.Framework;
+﻿using ConwaysGameOfLife;
+using Moq;
+using NUnit.Framework;
 
 namespace Tests
 {
-    public class InitialLoadTests
+    public class InitialLoadTests : Mock<Matrix>
     {
         [Test]
         public void It_should_create_a_list_of_rows_50_cells_wide()
