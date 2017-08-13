@@ -72,5 +72,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConwaysGameOfLife\ConwaysGameOfLife.csproj">
+      <Project>{c0a69300-f2cf-4b65-ab96-595ac0ddb98b}</Project>
+      <Name>ConwaysGameOfLife</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
