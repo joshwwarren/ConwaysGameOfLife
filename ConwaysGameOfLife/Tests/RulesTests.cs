@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace ConwaysGameOfLifeTests
+namespace Tests
 {
     [TestFixture]
     public class RulesTests
