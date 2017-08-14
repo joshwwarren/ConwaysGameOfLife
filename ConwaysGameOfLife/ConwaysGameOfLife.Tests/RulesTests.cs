@@ -1,9 +1,11 @@
-﻿using NUnit.Framework;
+﻿using AutoMoq.Helpers;
+using ConwaysGameOfLife.Models;
+using NUnit.Framework;
 
 namespace ConwaysGameOfLife.Tests
 {
     [TestFixture]
-    public class RulesTests
+    public class RulesTests : AutoMoqTestFixture<Matrix>
     {
         [Test]
         public void It_should_die_if_it_has_1_neighbor()
