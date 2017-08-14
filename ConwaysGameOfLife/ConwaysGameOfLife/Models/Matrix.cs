@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConwaysGameOfLife.Models
@@ -12,8 +13,13 @@ namespace ConwaysGameOfLife.Models
             return Enumerable.Range(1, wall)
                 .Select(s => new Row
                 {
-                    Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell())
+                    Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell { IsAlive = IsAliveAtCreation()})
                 });
+        }
+
+        private static bool IsAliveAtCreation()
+        {
+            return new Random().NextDouble() > 0.5;
         }
     }
 
