@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ConwaysGameOfLife.Models
 {
@@ -9,7 +9,11 @@ namespace ConwaysGameOfLife.Models
 
         public IEnumerable<Row> CreateNewMatrix()
         {
-            throw new System.NotImplementedException();
+            return Enumerable.Range(1, 50)
+                .Select(s => new Row
+                {
+                    Cells = Enumerable.Range(1, 50).Select(z => new Row.Cell())
+                });
         }
     }
 

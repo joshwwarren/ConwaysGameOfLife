@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AutoMoq.Helpers;
 using ConwaysGameOfLife.Models;
 using Moq;
 using NUnit.Framework;
@@ -7,26 +8,24 @@ using Should;
 namespace ConwaysGameOfLife.Tests
 {
     [TestFixture]
-    public class InitialLoadTests
+    public class InitialLoadTests : AutoMoqTestFixture<Matrix>
     {
-        private Matrix matrix;
-
         [SetUp]
         public void Setup()
         {
-            matrix = new Mock<Matrix>().Object;
+           ResetSubject();
         }
 
         [Test]
         public void It_should_create_a_list_of_rows_50_cells_wide()
         {
-            matrix.CreateNewMatrix().FirstOrDefault().Cells.Count().ShouldEqual(50);
+            Subject.CreateNewMatrix().FirstOrDefault().Cells.Count().ShouldEqual(50);
         }
 
         [Test]
         public void It_should_create_a_list_50_rows_long()
         {
-            
+            Subject.CreateNewMatrix().Count().ShouldEqual(50);
         }
     }
 }
