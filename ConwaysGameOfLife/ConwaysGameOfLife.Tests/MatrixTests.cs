@@ -7,7 +7,7 @@ using Should;
 namespace ConwaysGameOfLife.Tests
 {
     [TestFixture]
-    public class InitialLoadTests : AutoMoqTestFixture<Matrix>
+    public class MatrixTests : AutoMoqTestFixture<Matrix>
     {
         [SetUp]
         public void Setup()
