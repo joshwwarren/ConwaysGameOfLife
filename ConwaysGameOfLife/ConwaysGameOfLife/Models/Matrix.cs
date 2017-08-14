@@ -23,6 +23,12 @@ namespace ConwaysGameOfLife.Models
 
         public class Cell
         {
+            public void Judge(int numberOfNeighbors)
+            {
+                IsAlive = false;
+            }
+
+            public bool IsAlive { get; set; }
         }
     }
 }

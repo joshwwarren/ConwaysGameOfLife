@@ -1,15 +1,24 @@
 ﻿using AutoMoq.Helpers;
 using ConwaysGameOfLife.Models;
 using NUnit.Framework;
+using Should;
 
 namespace ConwaysGameOfLife.Tests
 {
     [TestFixture]
-    public class RulesTests : AutoMoqTestFixture<Matrix>
+    public class RulesTests : AutoMoqTestFixture<Row.Cell>
     {
+        [SetUp]
+        public void Setup()
+        {
+            ResetSubject();
+        }
+
         [Test]
         public void It_should_die_if_it_has_1_neighbor()
         {
+            Subject.Judge(1);
+            Subject.IsAlive.ShouldBeFalse();
         }
 
         [Test]
