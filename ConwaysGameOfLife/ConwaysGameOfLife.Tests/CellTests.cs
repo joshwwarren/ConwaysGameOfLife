@@ -6,7 +6,7 @@ using Should;
 namespace ConwaysGameOfLife.Tests
 {
     [TestFixture]
-    public class RulesTests : AutoMoqTestFixture<Row.Cell>
+    public class CellTests : AutoMoqTestFixture<Row.Cell>
     {
         [SetUp]
         public void Setup()
