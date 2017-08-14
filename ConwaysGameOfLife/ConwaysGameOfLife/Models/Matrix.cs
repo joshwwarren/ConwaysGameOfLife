@@ -23,12 +23,12 @@ namespace ConwaysGameOfLife.Models
 
         public class Cell
         {
+            public bool IsAlive { get; set; }
+
             public void Judge(int numberOfNeighbors)
             {
-                IsAlive = false;
+                IsAlive = new[] {2, 3}.Contains(numberOfNeighbors);
             }
-
-            public bool IsAlive { get; set; }
         }
     }
 }
