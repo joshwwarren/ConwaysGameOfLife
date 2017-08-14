@@ -7,12 +7,12 @@ namespace ConwaysGameOfLife.Models
     {
         public IEnumerable<Row> Rows { get; set; }
 
-        public IEnumerable<Row> CreateNewMatrix()
+        public IEnumerable<Row> CreateNewMatrix(int wall)
         {
-            return Enumerable.Range(1, 50)
+            return Enumerable.Range(1, wall)
                 .Select(s => new Row
                 {
-                    Cells = Enumerable.Range(1, 50).Select(z => new Row.Cell())
+                    Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell())
                 });
         }
     }
