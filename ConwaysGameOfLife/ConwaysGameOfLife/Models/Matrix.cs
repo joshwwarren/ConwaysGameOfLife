@@ -13,7 +13,7 @@ namespace ConwaysGameOfLife.Models
             return Enumerable.Range(1, wall)
                 .Select(s => new Row
                 {
-                    Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell {IsAlive = IsAliveAtCreation()})
+                    Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell {IsAlive = IsAliveAtCreation()}).ToList()
                 });
         }
 
@@ -23,12 +23,17 @@ namespace ConwaysGameOfLife.Models
             foreach (var row in matrix)
             {
                 var newRow = new Row();
+                newRow.Cells = new List<Row.Cell>();
                 var rowList = row.Cells.ToList();
 
                 foreach (var cell in rowList)
                 {
                     var index = rowList.FindIndex(i => i == cell);
-                    var newCell = new Row.Cell {IsAlive = cell.Judge(rowList.Count <= index ? rowList[index + 1].IsAlive ? 1 : 0 : 0)};
+                    var newCell = new Row.Cell
+                    {
+                        IsAlive = cell.Judge(rowList.Count <= index ? rowList[index + 1].IsAlive ? 1 : 0 : 0)
+                    };
+                    newRow.Cells.Add(newCell);
                 }
                 newMatrix.Add(newRow);
             }
@@ -43,7 +48,7 @@ namespace ConwaysGameOfLife.Models
 
     public class Row
     {
-        public IEnumerable<Cell> Cells { get; set; }
+        public List<Cell> Cells { get; set; }
 
         public class Cell
         {

@@ -47,7 +47,7 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_create_a_list_of_rows_50_cells_wide()
             {
-                Subject.CreateNewMatrix(50).FirstOrDefault().Cells.Count().ShouldEqual(50);
+                Subject.CreateNewMatrix(50).FirstOrDefault().Cells.Count.ShouldEqual(50);
             }
         }
     }
