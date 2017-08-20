@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using ConwaysGameOfLife.Models;
 
 namespace ConwaysGameOfLife.Controllers
 {
@@ -6,7 +7,7 @@ namespace ConwaysGameOfLife.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new Game());
         }
     }
 }
