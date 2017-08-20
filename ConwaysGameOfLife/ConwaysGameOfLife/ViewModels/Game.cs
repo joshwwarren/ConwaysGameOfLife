@@ -1,4 +1,6 @@
-﻿namespace ConwaysGameOfLife.Models
+﻿using ConwaysGameOfLife.Models;
+
+namespace ConwaysGameOfLife.ViewModels
 {
     public class Game
     {

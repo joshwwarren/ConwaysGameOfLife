@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using ConwaysGameOfLife.Models;
+using ConwaysGameOfLife.ViewModels;
 
 namespace ConwaysGameOfLife.Controllers
 {
