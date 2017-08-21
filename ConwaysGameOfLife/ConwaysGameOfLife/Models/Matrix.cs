@@ -4,11 +4,6 @@ using System.Linq;
 
 namespace ConwaysGameOfLife.Models
 {
-    public interface IMatrix
-    {
-        Matrix CreateNewMatrix();
-    }
-
     public class Matrix
     {
         public IEnumerable<Row> Rows { get; set; }
