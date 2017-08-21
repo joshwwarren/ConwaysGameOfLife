@@ -6,10 +6,12 @@ namespace ConwaysGameOfLife.Models
 {
     public class Matrix
     {
+        private static Random random;
         public IEnumerable<Row> Rows { get; set; }
 
         public Matrix CreateNewMatrix(int wall)
         {
+            random = new Random();
             return new Matrix
             {
                 Rows =
@@ -46,7 +48,7 @@ namespace ConwaysGameOfLife.Models
 
         private static bool IsAliveAtCreation()
         {
-            return new Random().NextDouble() > 0.5;
+            return random.NextDouble() > 0.5;
         }
     }
 
