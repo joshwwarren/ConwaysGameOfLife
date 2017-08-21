@@ -102,7 +102,8 @@ namespace ConwaysGameOfLife.Tests
                     }
                 };
 
-
+                Subject.IsTheCellAboveLeftAlive(matrix, 1, 1)
+                    .ShouldEqual(1);
             }
         }
 
