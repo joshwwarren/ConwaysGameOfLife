@@ -289,6 +289,19 @@ namespace ConwaysGameOfLife.Tests
                     }, 0)
                     .ShouldEqual(0);
             }
+
+            [Test]
+            public void It_should_return_0_if_there_is_no_cell_to_the_right()
+            {
+                Subject.IsTheCellToTheRightAlive(new Row
+                    {
+                        Cells = new List<Row.Cell>
+                        {
+                            new Row.Cell()
+                        }
+                    }, 0)
+                    .ShouldEqual(0);
+            }
         }
 
         [TestFixture]
