@@ -20,7 +20,10 @@ namespace ConwaysGameOfLife.Tests
             }
 
             [TestCase(true, true, true, false, false, false, false, false, false, true)]
-            public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree, bool twoone, bool twotwo, bool twothree, bool threeone, bool threetwo, bool threethree, bool expectedResult)
+            public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree,
+                bool twoone, bool twotwo, bool twothree,
+                bool threeone, bool threetwo, bool threethree,
+                bool expectedResult)
             {
                 var matrix = new Matrix
                 {
