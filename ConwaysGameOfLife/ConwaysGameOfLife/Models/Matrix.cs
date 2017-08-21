@@ -6,26 +6,31 @@ namespace ConwaysGameOfLife.Models
 {
     public interface IMatrix
     {
-        IEnumerable<Row> CreateNewMatrix();
+        Matrix CreateNewMatrix();
     }
 
     public class Matrix
     {
         public IEnumerable<Row> Rows { get; set; }
 
-        public IEnumerable<Row> CreateNewMatrix(int wall)
+        public Matrix CreateNewMatrix(int wall)
         {
-            return Enumerable.Range(1, wall)
-                .Select(s => new Row
-                {
-                    Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell {IsAlive = IsAliveAtCreation()}).ToList()
-                });
+            return new Matrix
+            {
+                Rows =
+                    Enumerable.Range(1, wall)
+                        .Select(s => new Row
+                        {
+                            Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell {IsAlive = IsAliveAtCreation()})
+                                .ToList()
+                        })
+            };
         }
 
-        public IEnumerable<Row> JudgeMatrix(IEnumerable<Row> matrix)
+        public IEnumerable<Row> JudgeMatrix(Matrix matrix)
         {
             var newMatrix = new List<Row>();
-            foreach (var row in matrix)
+            foreach (var row in matrix.Rows)
             {
                 var newRow = new Row();
                 newRow.Cells = new List<Row.Cell>();

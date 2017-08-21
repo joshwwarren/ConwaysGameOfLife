@@ -26,7 +26,6 @@ namespace ConwaysGameOfLife.Tests
                 Mocked<Row.Cell>()
                     .Verify(x => x.Judge(It.IsAny<int>()), Times.Exactly(2500));
             }
-
         }
 
         [TestFixture]
@@ -41,13 +40,13 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_create_a_list_50_rows_long()
             {
-                Subject.CreateNewMatrix(50).Count().ShouldEqual(50);
+                Subject.CreateNewMatrix(50).Rows.Count().ShouldEqual(50);
             }
 
             [Test]
             public void It_should_create_a_list_of_rows_50_cells_wide()
             {
-                Subject.CreateNewMatrix(50).FirstOrDefault().Cells.Count.ShouldEqual(50);
+                Subject.CreateNewMatrix(50).Rows.FirstOrDefault().Cells.Count.ShouldEqual(50);
             }
         }
     }
