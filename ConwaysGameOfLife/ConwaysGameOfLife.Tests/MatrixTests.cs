@@ -19,8 +19,8 @@ namespace ConwaysGameOfLife.Tests
                 ResetSubject();
             }
 
-            [TestCase(true, true, true, false, false, false, false, false, false)]
-            public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree, bool twoone, bool twotwo, bool twothree, bool threeone, bool threetwo, bool threethree)
+            [TestCase(true, true, true, false, false, false, false, false, false, true)]
+            public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree, bool twoone, bool twotwo, bool twothree, bool threeone, bool threetwo, bool threethree, bool expectedResult)
             {
                 var matrix = new Matrix
                 {
@@ -58,7 +58,7 @@ namespace ConwaysGameOfLife.Tests
 
                 var newMatrix = Subject.JudgeMatrix(matrix);
 
-                newMatrix.Rows[1].Cells[1].IsAlive.ShouldBeTrue();
+                newMatrix.Rows[1].Cells[1].IsAlive.ShouldEqual(expectedResult);
             }
         }
 
