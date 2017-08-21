@@ -53,13 +53,25 @@ namespace ConwaysGameOfLife.Models
                         var index = row.Cells.ToList().FindIndex(i => i == cell);
                         return new Row.Cell
                         {
-                            IsAlive = cell.Judge(row.Cells.Count <= index ? row.Cells[index + 1].IsAlive ? 1 : 0 : 0)
+                            IsAlive = cell.Judge(IsTheCellToTheRightAlive(row, index) +
+                                                 IsTheCellToTheLeftAlive(row, index)
+                                                 )
                         };
                     }).ToList()
                 })
             };
 
             return newMatrix;
+        }
+
+        private static int IsTheCellToTheLeftAlive(Row row, int index)
+        {
+            return index > 0 ? row.Cells[index - 1].IsAlive ? 1 : 0 : 0;
+        }
+
+        private static int IsTheCellToTheRightAlive(Row row, int index)
+        {
+            return row.Cells.Count <= index ? row.Cells[index + 1].IsAlive ? 1 : 0 : 0;
         }
 
         private static bool IsAliveAtCreation()
