@@ -331,6 +331,47 @@ namespace ConwaysGameOfLife.Tests
                     }, 0)
                     .ShouldEqual(0);
             }
+
+            [Test]
+            public void It_should_return_1_for_the_cell_to_the_left()
+            {
+                Subject.IsTheCellToTheLeftAlive(new Row
+                    {
+                        Cells = new List<Row.Cell>
+                        {
+                            new Row.Cell{IsAlive = true},
+                            new Row.Cell()
+                        }
+                    }, 1)
+                    .ShouldEqual(1);
+            }
+
+            [Test]
+            public void It_should_return_0_for_the_cell_to_the_left()
+            {
+                Subject.IsTheCellToTheLeftAlive(new Row
+                    {
+                        Cells = new List<Row.Cell>
+                        {
+                            new Row.Cell{IsAlive = false},
+                            new Row.Cell()
+                        }
+                    }, 1)
+                    .ShouldEqual(0);
+            }
+
+            [Test]
+            public void It_should_return_0_if_there_is_no_cell_to_the_left()
+            {
+                Subject.IsTheCellToTheRightAlive(new Row
+                    {
+                        Cells = new List<Row.Cell>
+                        {
+                            new Row.Cell()
+                        }
+                    }, 0)
+                    .ShouldEqual(0);
+            }
         }
 
         [TestFixture]
