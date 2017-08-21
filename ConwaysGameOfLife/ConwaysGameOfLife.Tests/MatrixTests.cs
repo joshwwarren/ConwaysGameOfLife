@@ -14,10 +14,25 @@ namespace ConwaysGameOfLife.Tests
         [TestFixture]
         public class JudgeMatrix : AutoMoqTestFixture<Matrix>
         {
+            private Matrix matrixWithOneCell;
+
             [SetUp]
             public void Setup()
             {
                 ResetSubject();
+                matrixWithOneCell = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell()
+                            }
+                        }
+                    }
+                };
             }
 
             //[TestCase(true, true, true, false, false, false, false, false, true)]
@@ -137,6 +152,13 @@ namespace ConwaysGameOfLife.Tests
             }
 
             [Test]
+            public void It_should_return_0_if_there_is_no_cell_above_left()
+            {
+                Subject.IsTheCellAboveLeftAlive(matrixWithOneCell, 0, 0)
+                    .ShouldEqual(0);
+            }
+
+            [Test]
             public void It_should_return_1_for_the_cell_above()
             {
                 var theCellBeingEvaluated = new Row.Cell();
@@ -195,6 +217,13 @@ namespace ConwaysGameOfLife.Tests
                 };
 
                 Subject.IsTheCellAboveAlive(matrix, 1, 1)
+                    .ShouldEqual(0);
+            }
+
+            [Test]
+            public void It_should_return_0_if_there_is_no_cell_above()
+            {
+                Subject.IsTheCellAboveAlive(matrixWithOneCell, 0, 0)
                     .ShouldEqual(0);
             }
 
