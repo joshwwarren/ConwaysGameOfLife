@@ -56,7 +56,10 @@ namespace ConwaysGameOfLife.Models
                         {
                             IsAlive = cell.Judge(IsTheCellToTheRightAlive(row, cellIndex) +
                                                  IsTheCellToTheLeftAlive(row, cellIndex) +
-                                                 IsCellAboveAlive(matrix, cellIndex, rowIndex))
+                                                 IsTheCellAboveAlive(matrix, cellIndex, rowIndex) +
+                                                 IsTheCellBelowAlive(matrix, cellIndex, rowIndex) +
+                                                 IsTheCellAboveLeftAlive(matrix, cellIndex, rowIndex) +
+                                                 IsTheCellAboveRightAlive(matrix, cellIndex, rowIndex))
                         };
                     }).ToList()
                 }).ToList()
@@ -65,19 +68,34 @@ namespace ConwaysGameOfLife.Models
             return newMatrix;
         }
 
-        private static int IsCellAboveAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private static int IsTheCellAboveRightAlive(Matrix matrix, int cellIndex, int rowIndex)
+        {
+            return rowIndex > 0 ? IsTheCellToTheRightAlive(matrix.Rows[rowIndex - 1], cellIndex) : 0;
+        }
+
+        private static int IsTheCellAboveLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
+        {
+            return rowIndex > 0 ? IsTheCellToTheLeftAlive(matrix.Rows[rowIndex - 1], cellIndex) : 0;
+        }
+
+        private static int IsTheCellBelowAlive(Matrix matrix, int cellIndex, int rowIndex)
+        {
+            return matrix.Rows.Count <= rowIndex ? (matrix.Rows[rowIndex + 1].Cells[cellIndex].IsAlive ? 1 : 0) : 0;
+        }
+
+        private static int IsTheCellAboveAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return rowIndex > 0 ? (matrix.Rows[rowIndex - 1].Cells[cellIndex].IsAlive ? 1 : 0) : 0;
         }
 
-        private static int IsTheCellToTheLeftAlive(Row row, int index)
+        private static int IsTheCellToTheLeftAlive(Row row, int cellIndex)
         {
-            return index > 0 ? (row.Cells[index - 1].IsAlive ? 1 : 0) : 0;
+            return cellIndex > 0 ? (row.Cells[cellIndex - 1].IsAlive ? 1 : 0) : 0;
         }
 
-        private static int IsTheCellToTheRightAlive(Row row, int index)
+        private static int IsTheCellToTheRightAlive(Row row, int cellIndex)
         {
-            return row.Cells.Count <= index ? (row.Cells[index + 1].IsAlive ? 1 : 0) : 0;
+            return row.Cells.Count <= cellIndex ? (row.Cells[cellIndex + 1].IsAlive ? 1 : 0) : 0;
         }
 
         private static bool IsAliveAtCreation()
