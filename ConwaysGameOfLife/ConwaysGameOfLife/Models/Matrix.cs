@@ -59,13 +59,25 @@ namespace ConwaysGameOfLife.Models
                                                  IsTheCellAboveAlive(matrix, cellIndex, rowIndex) +
                                                  IsTheCellBelowAlive(matrix, cellIndex, rowIndex) +
                                                  IsTheCellAboveLeftAlive(matrix, cellIndex, rowIndex) +
-                                                 IsTheCellAboveRightAlive(matrix, cellIndex, rowIndex))
+                                                 IsTheCellAboveRightAlive(matrix, cellIndex, rowIndex) +
+                                                 IsTheCellBelowLeftAlive(matrix, cellIndex, rowIndex) +
+                                                 IsTheCellBelowRightAlive(matrix, cellIndex, rowIndex))
                         };
                     }).ToList()
                 }).ToList()
             };
 
             return newMatrix;
+        }
+
+        private static int IsTheCellBelowRightAlive(Matrix matrix, int cellIndex, int rowIndex)
+        {
+            return matrix.Rows.Count <= rowIndex ? IsTheCellToTheRightAlive(matrix.Rows[rowIndex + 1], cellIndex) : 0;
+        }
+
+        private static int IsTheCellBelowLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
+        {
+            return matrix.Rows.Count <= rowIndex ? IsTheCellToTheLeftAlive(matrix.Rows[rowIndex + 1], cellIndex) : 0;
         }
 
         private static int IsTheCellAboveRightAlive(Matrix matrix, int cellIndex, int rowIndex)
