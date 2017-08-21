@@ -26,24 +26,6 @@ namespace ConwaysGameOfLife.Models
 
         public Matrix JudgeMatrix(Matrix matrix)
         {
-            //var newMatrix = new Matrix();
-            //foreach (var row in matrix.Rows)
-            //{
-            //    var newRow = new Row {Cells = new List<Row.Cell>()};
-            //    var rowList = row.Cells.ToList();
-
-            //    foreach (var cell in rowList)
-            //    {
-            //        var index = rowList.FindIndex(i => i == cell);
-            //        var newCell = new Row.Cell
-            //        {
-            //            IsAlive = cell.Judge(rowList.Count <= index ? rowList[index + 1].IsAlive ? 1 : 0 : 0)
-            //        };
-            //        newRow.Cells.Add(newCell);
-            //    }
-            //    newMatrix.Rows.Add(newRow);
-            //}
-
             var newMatrix = new Matrix
             {
                 Rows = matrix.Rows.Select(row => new Row
@@ -54,20 +36,25 @@ namespace ConwaysGameOfLife.Models
                         var rowIndex = matrix.Rows.ToList().FindIndex(i => i == row);
                         return new Row.Cell
                         {
-                            IsAlive = cell.Judge(IsTheCellToTheRightAlive(row, cellIndex) +
-                                                 IsTheCellToTheLeftAlive(row, cellIndex) +
-                                                 IsTheCellAboveAlive(matrix, cellIndex, rowIndex) +
-                                                 IsTheCellBelowAlive(matrix, cellIndex, rowIndex) +
-                                                 IsTheCellAboveLeftAlive(matrix, cellIndex, rowIndex) +
-                                                 IsTheCellAboveRightAlive(matrix, cellIndex, rowIndex) +
-                                                 IsTheCellBelowLeftAlive(matrix, cellIndex, rowIndex) +
-                                                 IsTheCellBelowRightAlive(matrix, cellIndex, rowIndex))
+                            IsAlive = cell.Judge(CalculateLivingNeighbors(matrix, row, cellIndex, rowIndex))
                         };
                     }).ToList()
                 }).ToList()
             };
 
             return newMatrix;
+        }
+
+        private static int CalculateLivingNeighbors(Matrix matrix, Row row, int cellIndex, int rowIndex)
+        {
+            return IsTheCellToTheRightAlive(row, cellIndex) +
+                   IsTheCellToTheLeftAlive(row, cellIndex) +
+                   IsTheCellAboveAlive(matrix, cellIndex, rowIndex) +
+                   IsTheCellBelowAlive(matrix, cellIndex, rowIndex) +
+                   IsTheCellAboveLeftAlive(matrix, cellIndex, rowIndex) +
+                   IsTheCellAboveRightAlive(matrix, cellIndex, rowIndex) +
+                   IsTheCellBelowLeftAlive(matrix, cellIndex, rowIndex) +
+                   IsTheCellBelowRightAlive(matrix, cellIndex, rowIndex);
         }
 
         private static int IsTheCellBelowRightAlive(Matrix matrix, int cellIndex, int rowIndex)
