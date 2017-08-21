@@ -19,12 +19,18 @@ namespace ConwaysGameOfLife.Tests
                 ResetSubject();
             }
 
-            [TestCase(true, true, true, false, false, false, false, false, false, true)]
+            [TestCase(true, true, true, false, false, false, false, false, true)]
+            [TestCase(true, true, false, true, false, false, false, false, true)]
+            [TestCase(true, true, false, false, true, false, false, false, true)]
+            [TestCase(true, true, false, false, false, true, false, false, true)]
+            [TestCase(true, true, false, false, false, false, true, false, true)]
+            [TestCase(true, true, false, false, false, false, false, true, true)]
             public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree,
-                bool twoone, bool twotwo, bool twothree,
+                bool twoone, bool twothree,
                 bool threeone, bool threetwo, bool threethree,
                 bool expectedResult)
             {
+                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -43,7 +49,7 @@ namespace ConwaysGameOfLife.Tests
                             Cells = new List<Row.Cell>
                             {
                                 new Row.Cell{ IsAlive = twoone},
-                                new Row.Cell{ IsAlive = twotwo},
+                                theCellBeingEvaluated,
                                 new Row.Cell{ IsAlive = twothree}
                             }
                         },
