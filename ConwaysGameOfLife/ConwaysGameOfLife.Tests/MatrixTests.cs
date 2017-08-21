@@ -77,7 +77,7 @@ namespace ConwaysGameOfLife.Tests
             }
 
             [Test]
-            public void It_should_return_1_for_above_left()
+            public void It_should_return_1_for_the_cell_above_left()
             {
                 var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
@@ -107,7 +107,7 @@ namespace ConwaysGameOfLife.Tests
             }
 
             [Test]
-            public void It_should_return_0_for_above_left()
+            public void It_should_return_0_for_the_cell_above_left()
             {
                 var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
@@ -135,6 +135,69 @@ namespace ConwaysGameOfLife.Tests
                 Subject.IsTheCellAboveLeftAlive(matrix, 1, 1)
                     .ShouldEqual(0);
             }
+
+            [Test]
+            public void It_should_return_1_for_the_cell_above()
+            {
+                var theCellBeingEvaluated = new Row.Cell();
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                new Row.Cell {IsAlive = true}
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                theCellBeingEvaluated
+                            }
+                        }
+                    }
+                };
+
+                Subject.IsTheCellAboveAlive(matrix, 1, 1)
+                    .ShouldEqual(1);
+            }
+
+            [Test]
+            public void It_should_return_0_for_the_cell_above()
+            {
+                var theCellBeingEvaluated = new Row.Cell();
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                new Row.Cell {IsAlive = false}
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                theCellBeingEvaluated
+                            }
+                        }
+                    }
+                };
+
+                Subject.IsTheCellAboveAlive(matrix, 1, 1)
+                    .ShouldEqual(0);
+            }
+
         }
 
         [TestFixture]
