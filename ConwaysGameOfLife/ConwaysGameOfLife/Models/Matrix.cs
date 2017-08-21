@@ -7,7 +7,7 @@ namespace ConwaysGameOfLife.Models
     public class Matrix
     {
         private static Random random;
-        public IEnumerable<Row> Rows { get; set; }
+        public List<Row> Rows { get; set; }
 
         public Matrix CreateNewMatrix(int wall)
         {
@@ -20,7 +20,7 @@ namespace ConwaysGameOfLife.Models
                         {
                             Cells = Enumerable.Range(1, wall).Select(z => new Row.Cell {IsAlive = IsAliveAtCreation()})
                                 .ToList()
-                        })
+                        }).ToList()
             };
         }
 
@@ -50,28 +50,34 @@ namespace ConwaysGameOfLife.Models
                 {
                     Cells = row.Cells.Select(cell =>
                     {
-                        var index = row.Cells.ToList().FindIndex(i => i == cell);
+                        var cellIndex = row.Cells.ToList().FindIndex(i => i == cell);
+                        var rowIndex = matrix.Rows.ToList().FindIndex(i => i == row);
                         return new Row.Cell
                         {
-                            IsAlive = cell.Judge(IsTheCellToTheRightAlive(row, index) +
-                                                 IsTheCellToTheLeftAlive(row, index)
-                                                 )
+                            IsAlive = cell.Judge(IsTheCellToTheRightAlive(row, cellIndex) +
+                                                 IsTheCellToTheLeftAlive(row, cellIndex) +
+                                                 IsCellAboveAlive(matrix, cellIndex, rowIndex))
                         };
                     }).ToList()
-                })
+                }).ToList()
             };
 
             return newMatrix;
         }
 
+        private static int IsCellAboveAlive(Matrix matrix, int cellIndex, int rowIndex)
+        {
+            return rowIndex > 0 ? (matrix.Rows[rowIndex - 1].Cells[cellIndex].IsAlive ? 1 : 0) : 0;
+        }
+
         private static int IsTheCellToTheLeftAlive(Row row, int index)
         {
-            return index > 0 ? row.Cells[index - 1].IsAlive ? 1 : 0 : 0;
+            return index > 0 ? (row.Cells[index - 1].IsAlive ? 1 : 0) : 0;
         }
 
         private static int IsTheCellToTheRightAlive(Row row, int index)
         {
-            return row.Cells.Count <= index ? row.Cells[index + 1].IsAlive ? 1 : 0 : 0;
+            return row.Cells.Count <= index ? (row.Cells[index + 1].IsAlive ? 1 : 0) : 0;
         }
 
         private static bool IsAliveAtCreation()
