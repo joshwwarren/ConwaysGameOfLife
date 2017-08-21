@@ -57,17 +57,17 @@ namespace ConwaysGameOfLife.Models
                    IsTheCellBelowRightAlive(matrix, cellIndex, rowIndex);
         }
 
-        private int IsTheCellBelowRightAlive(Matrix matrix, int cellIndex, int rowIndex)
+        public int IsTheCellBelowRightAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return matrix.Rows.Count <= rowIndex ? IsTheCellToTheRightAlive(matrix.Rows[rowIndex + 1], cellIndex) : 0;
         }
 
-        private int IsTheCellBelowLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
+        public int IsTheCellBelowLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return matrix.Rows.Count <= rowIndex ? IsTheCellToTheLeftAlive(matrix.Rows[rowIndex + 1], cellIndex) : 0;
         }
 
-        private int IsTheCellAboveRightAlive(Matrix matrix, int cellIndex, int rowIndex)
+        public int IsTheCellAboveRightAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return rowIndex > 0 ? IsTheCellToTheRightAlive(matrix.Rows[rowIndex - 1], cellIndex) : 0;
         }
@@ -87,12 +87,12 @@ namespace ConwaysGameOfLife.Models
             return rowIndex > 0 ? (matrix.Rows[rowIndex - 1].Cells[cellIndex].IsAlive ? 1 : 0) : 0;
         }
 
-        private int IsTheCellToTheLeftAlive(Row row, int cellIndex)
+        public int IsTheCellToTheLeftAlive(Row row, int cellIndex)
         {
             return cellIndex > 0 ? (row.Cells[cellIndex - 1].IsAlive ? 1 : 0) : 0;
         }
 
-        private int IsTheCellToTheRightAlive(Row row, int cellIndex)
+        public int IsTheCellToTheRightAlive(Row row, int cellIndex)
         {
             return row.Cells.Count <= cellIndex ? (row.Cells[cellIndex + 1].IsAlive ? 1 : 0) : 0;
         }
