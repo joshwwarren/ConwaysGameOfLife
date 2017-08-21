@@ -12,7 +12,15 @@
 </head>
 <body>
 <div>
-      
+    @foreach (var row in Model.Matrix.Rows)
+    {
+        <div>
+            @foreach (var cell in row.Cells)
+            {
+                <div style="height: 10px; width: 10px; display: inline-block; background-color: @(cell.IsAlive ? "green" : "red")"></div>
+            }
+        </div>
+    }
 </div>
 </body>
 </html>
