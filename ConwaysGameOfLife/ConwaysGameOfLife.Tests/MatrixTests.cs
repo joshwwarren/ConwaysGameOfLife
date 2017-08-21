@@ -398,6 +398,42 @@ namespace ConwaysGameOfLife.Tests
             }
 
             [Test]
+            public void It_should_return_0_for_the_cell_below_left()
+            {
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                theCellBeingEvaluated
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell{IsAlive = false}
+                            }
+                        }
+                    }
+                };
+
+                Subject.IsTheCellBelowLeftAlive(matrix, 1, 0)
+                    .ShouldEqual(0);
+            }
+
+            [Test]
+            public void It_should_return_0_if_there_is_no_row_below_left()
+            {
+                Subject.IsTheCellBelowLeftAlive(matrixWithOneCell, 0, 0)
+                    .ShouldEqual(0);
+            }
+
+            [Test]
             public void It_should_return_1_for_the_cell_below()
             {
                 var matrix = new Matrix
