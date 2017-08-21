@@ -15,11 +15,13 @@ namespace ConwaysGameOfLife.Tests
         public class JudgeMatrix : AutoMoqTestFixture<Matrix>
         {
             private Matrix matrixWithOneCell;
+            private Row.Cell theCellBeingEvaluated;
 
             [SetUp]
             public void Setup()
             {
                 ResetSubject();
+                theCellBeingEvaluated = new Row.Cell();
                 matrixWithOneCell = new Matrix
                 {
                     Rows = new List<Row>
@@ -51,7 +53,6 @@ namespace ConwaysGameOfLife.Tests
                 bool threeone, bool threetwo, bool threethree,
                 bool expectedResult)
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -94,7 +95,6 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_return_1_for_the_cell_above_left()
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -124,7 +124,6 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_return_0_for_the_cell_above_left()
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -161,7 +160,6 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_return_1_for_the_cell_above()
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -192,7 +190,6 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_return_0_for_the_cell_above()
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -230,7 +227,6 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_return_1_for_the_cell_above_right()
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -262,7 +258,6 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_return_0_for_the_cell_above_right()
             {
-                var theCellBeingEvaluated = new Row.Cell();
                 var matrix = new Matrix
                 {
                     Rows = new List<Row>
@@ -298,7 +293,7 @@ namespace ConwaysGameOfLife.Tests
                     {
                         Cells = new List<Row.Cell>
                         {
-                            new Row.Cell(),
+                            theCellBeingEvaluated,
                             new Row.Cell{IsAlive = true}
                         }
                     }, 0)
@@ -312,7 +307,7 @@ namespace ConwaysGameOfLife.Tests
                     {
                         Cells = new List<Row.Cell>
                         {
-                            new Row.Cell(),
+                            theCellBeingEvaluated,
                             new Row.Cell{IsAlive = false}
                         }
                     }, 0)
@@ -326,7 +321,7 @@ namespace ConwaysGameOfLife.Tests
                     {
                         Cells = new List<Row.Cell>
                         {
-                            new Row.Cell()
+                            theCellBeingEvaluated
                         }
                     }, 0)
                     .ShouldEqual(0);
@@ -340,7 +335,7 @@ namespace ConwaysGameOfLife.Tests
                         Cells = new List<Row.Cell>
                         {
                             new Row.Cell{IsAlive = true},
-                            new Row.Cell()
+                            theCellBeingEvaluated
                         }
                     }, 1)
                     .ShouldEqual(1);
@@ -354,7 +349,7 @@ namespace ConwaysGameOfLife.Tests
                         Cells = new List<Row.Cell>
                         {
                             new Row.Cell{IsAlive = false},
-                            new Row.Cell()
+                            theCellBeingEvaluated
                         }
                     }, 1)
                     .ShouldEqual(0);
