@@ -27,8 +27,7 @@ namespace ConwaysGameOfLife.Models
             var newMatrix = new List<Row>();
             foreach (var row in matrix.Rows)
             {
-                var newRow = new Row();
-                newRow.Cells = new List<Row.Cell>();
+                var newRow = new Row {Cells = new List<Row.Cell>()};
                 var rowList = row.Cells.ToList();
 
                 foreach (var cell in rowList)
