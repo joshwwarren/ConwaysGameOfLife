@@ -45,7 +45,7 @@ namespace ConwaysGameOfLife.Models
             return newMatrix;
         }
 
-        private static int CalculateLivingNeighbors(Matrix matrix, Row row, int cellIndex, int rowIndex)
+        private int CalculateLivingNeighbors(Matrix matrix, Row row, int cellIndex, int rowIndex)
         {
             return IsTheCellToTheRightAlive(row, cellIndex) +
                    IsTheCellToTheLeftAlive(row, cellIndex) +
@@ -57,42 +57,42 @@ namespace ConwaysGameOfLife.Models
                    IsTheCellBelowRightAlive(matrix, cellIndex, rowIndex);
         }
 
-        private static int IsTheCellBelowRightAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private int IsTheCellBelowRightAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return matrix.Rows.Count <= rowIndex ? IsTheCellToTheRightAlive(matrix.Rows[rowIndex + 1], cellIndex) : 0;
         }
 
-        private static int IsTheCellBelowLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private int IsTheCellBelowLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return matrix.Rows.Count <= rowIndex ? IsTheCellToTheLeftAlive(matrix.Rows[rowIndex + 1], cellIndex) : 0;
         }
 
-        private static int IsTheCellAboveRightAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private int IsTheCellAboveRightAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return rowIndex > 0 ? IsTheCellToTheRightAlive(matrix.Rows[rowIndex - 1], cellIndex) : 0;
         }
 
-        private static int IsTheCellAboveLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private int IsTheCellAboveLeftAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return rowIndex > 0 ? IsTheCellToTheLeftAlive(matrix.Rows[rowIndex - 1], cellIndex) : 0;
         }
 
-        private static int IsTheCellBelowAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private int IsTheCellBelowAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return matrix.Rows.Count <= rowIndex ? (matrix.Rows[rowIndex + 1].Cells[cellIndex].IsAlive ? 1 : 0) : 0;
         }
 
-        private static int IsTheCellAboveAlive(Matrix matrix, int cellIndex, int rowIndex)
+        private int IsTheCellAboveAlive(Matrix matrix, int cellIndex, int rowIndex)
         {
             return rowIndex > 0 ? (matrix.Rows[rowIndex - 1].Cells[cellIndex].IsAlive ? 1 : 0) : 0;
         }
 
-        private static int IsTheCellToTheLeftAlive(Row row, int cellIndex)
+        private int IsTheCellToTheLeftAlive(Row row, int cellIndex)
         {
             return cellIndex > 0 ? (row.Cells[cellIndex - 1].IsAlive ? 1 : 0) : 0;
         }
 
-        private static int IsTheCellToTheRightAlive(Row row, int cellIndex)
+        private int IsTheCellToTheRightAlive(Row row, int cellIndex)
         {
             return row.Cells.Count <= cellIndex ? (row.Cells[cellIndex + 1].IsAlive ? 1 : 0) : 0;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMoq.Helpers;
+using Castle.Components.DictionaryAdapter;
 using ConwaysGameOfLife.Models;
 using Moq;
 using NUnit.Framework;
@@ -19,12 +20,17 @@ namespace ConwaysGameOfLife.Tests
                 ResetSubject();
             }
 
-            [TestCase(true, true, true, false, false, false, false, false, true)]
-            [TestCase(true, true, false, true, false, false, false, false, true)]
-            [TestCase(true, true, false, false, true, false, false, false, true)]
-            [TestCase(true, true, false, false, false, true, false, false, true)]
-            [TestCase(true, true, false, false, false, false, true, false, true)]
-            [TestCase(true, true, false, false, false, false, false, true, true)]
+            //[TestCase(true, true, true, false, false, false, false, false, true)]
+            //[TestCase(true, true, false, true, false, false, false, false, true)]
+            //[TestCase(true, true, false, false, true, false, false, false, true)]
+            //[TestCase(true, true, false, false, false, true, false, false, true)]
+            //[TestCase(true, true, false, false, false, false, true, false, true)]
+            //[TestCase(true, true, false, false, false, false, false, true, true)]
+            [TestCase(true, false, true, false, false, false, false, true, true)]
+            //[TestCase(true, false, false, true, false, false, false, true, true)]
+            //[TestCase(true, false, false, false, true, false, false, true, true)]
+            //[TestCase(true, false, false, false, false, true, false, true, true)]
+            //[TestCase(true, false, false, false, false, false, true, true, true)]
             public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree,
                 bool twoone, bool twothree,
                 bool threeone, bool threetwo, bool threethree,
@@ -39,27 +45,27 @@ namespace ConwaysGameOfLife.Tests
                         {
                             Cells = new List<Row.Cell>
                             {
-                                new Row.Cell{ IsAlive = oneone},
-                                new Row.Cell{ IsAlive = onetwo},
-                                new Row.Cell{ IsAlive = onethree}
+                                new Row.Cell {IsAlive = oneone},
+                                new Row.Cell {IsAlive = onetwo},
+                                new Row.Cell {IsAlive = onethree}
                             }
                         },
                         new Row
                         {
                             Cells = new List<Row.Cell>
                             {
-                                new Row.Cell{ IsAlive = twoone},
+                                new Row.Cell {IsAlive = twoone},
                                 theCellBeingEvaluated,
-                                new Row.Cell{ IsAlive = twothree}
+                                new Row.Cell {IsAlive = twothree}
                             }
                         },
                         new Row
                         {
                             Cells = new List<Row.Cell>
                             {
-                                new Row.Cell{ IsAlive = threeone},
-                                new Row.Cell{ IsAlive = threetwo},
-                                new Row.Cell{ IsAlive = threethree}
+                                new Row.Cell {IsAlive = threeone},
+                                new Row.Cell {IsAlive = threetwo},
+                                new Row.Cell {IsAlive = threethree}
                             }
                         },
                     }
@@ -68,6 +74,35 @@ namespace ConwaysGameOfLife.Tests
                 var newMatrix = Subject.JudgeMatrix(matrix);
 
                 newMatrix.Rows[1].Cells[1].IsAlive.ShouldEqual(expectedResult);
+            }
+
+            [Test]
+            public void It_should_return_1_for_above_left()
+            {
+                var theCellBeingEvaluated = new Row.Cell();
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell {IsAlive = true}
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                theCellBeingEvaluated
+                            }
+                        }
+                    }
+                };
+
+
             }
         }
 
