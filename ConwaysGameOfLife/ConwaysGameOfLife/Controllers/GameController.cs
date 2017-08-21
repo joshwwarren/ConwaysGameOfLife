@@ -8,7 +8,14 @@ namespace ConwaysGameOfLife.Controllers
     {
         public ActionResult Index()
         {
-            return View(new Game {Matrix = new Matrix().CreateNewMatrix(50)});
+            var newMatrix = new Matrix().CreateNewMatrix(50);
+            Session.Add("matrix", newMatrix);
+            return View(new Game {Matrix = newMatrix});
+        }
+
+        public ActionResult Judge()
+        {
+            return View("Index", new Game {Matrix = new Matrix().JudgeMatrix((Matrix) Session["matrix"])});
         }
     }
 }

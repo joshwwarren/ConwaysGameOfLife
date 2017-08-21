@@ -24,25 +24,41 @@ namespace ConwaysGameOfLife.Models
             };
         }
 
-        public IEnumerable<Row> JudgeMatrix(Matrix matrix)
+        public Matrix JudgeMatrix(Matrix matrix)
         {
-            var newMatrix = new List<Row>();
-            foreach (var row in matrix.Rows)
-            {
-                var newRow = new Row {Cells = new List<Row.Cell>()};
-                var rowList = row.Cells.ToList();
+            //var newMatrix = new Matrix();
+            //foreach (var row in matrix.Rows)
+            //{
+            //    var newRow = new Row {Cells = new List<Row.Cell>()};
+            //    var rowList = row.Cells.ToList();
 
-                foreach (var cell in rowList)
+            //    foreach (var cell in rowList)
+            //    {
+            //        var index = rowList.FindIndex(i => i == cell);
+            //        var newCell = new Row.Cell
+            //        {
+            //            IsAlive = cell.Judge(rowList.Count <= index ? rowList[index + 1].IsAlive ? 1 : 0 : 0)
+            //        };
+            //        newRow.Cells.Add(newCell);
+            //    }
+            //    newMatrix.Rows.Add(newRow);
+            //}
+
+            var newMatrix = new Matrix
+            {
+                Rows = matrix.Rows.Select(row => new Row
                 {
-                    var index = rowList.FindIndex(i => i == cell);
-                    var newCell = new Row.Cell
+                    Cells = row.Cells.Select(cell =>
                     {
-                        IsAlive = cell.Judge(rowList.Count <= index ? rowList[index + 1].IsAlive ? 1 : 0 : 0)
-                    };
-                    newRow.Cells.Add(newCell);
-                }
-                newMatrix.Add(newRow);
-            }
+                        var index = row.Cells.ToList().FindIndex(i => i == cell);
+                        return new Row.Cell
+                        {
+                            IsAlive = cell.Judge(row.Cells.Count <= index ? row.Cells[index + 1].IsAlive ? 1 : 0 : 0)
+                        };
+                    }).ToList()
+                })
+            };
+
             return newMatrix;
         }
 
