@@ -198,6 +198,65 @@ namespace ConwaysGameOfLife.Tests
                     .ShouldEqual(0);
             }
 
+            [Test]
+            public void It_should_return_1_for_the_cell_above_right()
+            {
+                var theCellBeingEvaluated = new Row.Cell();
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                new Row.Cell(),
+                                new Row.Cell {IsAlive = true}
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                theCellBeingEvaluated
+                            }
+                        }
+                    }
+                };
+
+                Subject.IsTheCellAboveRightAlive(matrix, 1, 1)
+                    .ShouldEqual(1);
+            }
+
+            [Test]
+            public void It_should_return_1_for_the_cell_to_the_right()
+            {
+                Subject.IsTheCellToTheRightAlive(new Row
+                    {
+                        Cells = new List<Row.Cell>
+                        {
+                            new Row.Cell(),
+                            new Row.Cell{IsAlive = true}
+                        }
+                    }, 0)
+                    .ShouldEqual(1);
+            }
+
+            [Test]
+            public void It_should_return_0_for_the_cell_to_the_right()
+            {
+                Subject.IsTheCellToTheRightAlive(new Row
+                    {
+                        Cells = new List<Row.Cell>
+                        {
+                            new Row.Cell(),
+                            new Row.Cell{IsAlive = false}
+                        }
+                    }, 0)
+                    .ShouldEqual(0);
+            }
         }
 
         [TestFixture]

@@ -94,7 +94,7 @@ namespace ConwaysGameOfLife.Models
 
         public int IsTheCellToTheRightAlive(Row row, int cellIndex)
         {
-            return row.Cells.Count <= cellIndex ? (row.Cells[cellIndex + 1].IsAlive ? 1 : 0) : 0;
+            return cellIndex <= row.Cells.Count ? (row.Cells[cellIndex + 1].IsAlive ? 1 : 0) : 0;
         }
 
         private static bool IsAliveAtCreation()
