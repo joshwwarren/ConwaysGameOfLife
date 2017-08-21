@@ -14,10 +14,10 @@
 <div>
     @foreach (var row in Model.Matrix.Rows)
     {
-        <div>
+        <div style="margin: 0; padding: 0;">
             @foreach (var cell in row.Cells)
             {
-                <div style="height: 10px; width: 10px; display: inline-block; background-color: @(cell.IsAlive ? "green" : "red")"></div>
+                <div style="display: inline-block; height: 10px; width: 10px; background-color: @(cell.IsAlive ? "green" : "red"); margin: 0; padding: 0;"></div>
             }
         </div>
     }
