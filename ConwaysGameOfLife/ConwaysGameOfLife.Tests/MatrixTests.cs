@@ -499,6 +499,71 @@ namespace ConwaysGameOfLife.Tests
                 Subject.IsTheCellBelowAlive(matrixWithOneCell, 0, 0)
                     .ShouldEqual(0);
             }
+
+            [Test]
+            public void It_should_return_1_for_the_cell_below_right()
+            {
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                theCellBeingEvaluated
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                new Row.Cell{IsAlive = true}
+                            }
+                        }
+                    }
+                };
+
+                Subject.IsTheCellBelowRightAlive(matrix, 0, 0)
+                    .ShouldEqual(1);
+            }
+
+            [Test]
+            public void It_should_return_0_for_the_cell_below_right()
+            {
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                theCellBeingEvaluated
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell(),
+                                new Row.Cell{IsAlive = false}
+                            }
+                        }
+                    }
+                };
+
+                Subject.IsTheCellBelowRightAlive(matrix, 0, 0)
+                    .ShouldEqual(0);
+            }
+
+            [Test]
+            public void It_should_return_0_if_there_is_no_row_below_right()
+            {
+                Subject.IsTheCellBelowRightAlive(matrixWithOneCell, 0, 0)
+                    .ShouldEqual(0);
+            }
         }
 
         [TestFixture]
