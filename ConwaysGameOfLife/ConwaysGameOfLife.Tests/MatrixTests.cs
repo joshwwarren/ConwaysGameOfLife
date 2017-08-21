@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMoq.Helpers;
 using ConwaysGameOfLife.Models;
 using Moq;
@@ -18,13 +19,46 @@ namespace ConwaysGameOfLife.Tests
                 ResetSubject();
             }
 
-            [Test]
-            public void It_should_judge_every_cell()
+            [TestCase(true, true, true, false, false, false, false, false, false)]
+            public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree, bool twoone, bool twotwo, bool twothree, bool threeone, bool threetwo, bool threethree)
             {
-                Subject.JudgeMatrix(Subject.CreateNewMatrix(50));
+                var matrix = new Matrix
+                {
+                    Rows = new List<Row>
+                    {
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell{ IsAlive = oneone},
+                                new Row.Cell{ IsAlive = onetwo},
+                                new Row.Cell{ IsAlive = onethree}
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell{ IsAlive = twoone},
+                                new Row.Cell{ IsAlive = twotwo},
+                                new Row.Cell{ IsAlive = twothree}
+                            }
+                        },
+                        new Row
+                        {
+                            Cells = new List<Row.Cell>
+                            {
+                                new Row.Cell{ IsAlive = threeone},
+                                new Row.Cell{ IsAlive = threetwo},
+                                new Row.Cell{ IsAlive = threethree}
+                            }
+                        },
+                    }
+                };
 
-                Mocked<Row.Cell>()
-                    .Verify(x => x.Judge(It.IsAny<int>()), Times.Exactly(2500));
+                var newMatrix = Subject.JudgeMatrix(matrix);
+
+                newMatrix.Rows[1].Cells[1].IsAlive.ShouldBeTrue();
             }
         }
 
