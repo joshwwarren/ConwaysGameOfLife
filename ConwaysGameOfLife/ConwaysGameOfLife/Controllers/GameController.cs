@@ -16,8 +16,11 @@ namespace ConwaysGameOfLife.Controllers
 
         public ActionResult Judge()
         {
+            if (Session["matrix"] == null) Response.Redirect("Index");
+
             var newMatrix = new Matrix().JudgeMatrix((Matrix) Session["matrix"]);
             Session.Add("matrix", newMatrix);
+            ViewBag.ShowCreateNewMatrixButton = true;
             return View("Index", new Game {Matrix = newMatrix});
         }
     }

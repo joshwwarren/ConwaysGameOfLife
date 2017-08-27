@@ -8,8 +8,12 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-1 btn-block">
             <a class="btn btn-primary btn-lg active" style="margin: 5px;" role="button" href="/Game/Judge">Judge</a>
+            @if ((bool?) ViewBag.ShowCreateNewMatrixButton ?? false)
+            {
+                <a class="btn btn-danger btn-lg active" style="margin: 5px;" role="button" href="/Game">Start Over</a>
+            }
         </div>
     </div>
     <div class="row">
