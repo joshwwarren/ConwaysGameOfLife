@@ -578,7 +578,7 @@ namespace ConwaysGameOfLife.Tests
             [Test]
             public void It_should_create_a_list_50_rows_long()
             {
-                Subject.CreateNewMatrix(50).Rows.Count().ShouldEqual(50);
+                Subject.CreateNewMatrix(50).Rows.Count.ShouldEqual(50);
             }
 
             [Test]
