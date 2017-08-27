@@ -562,6 +562,30 @@ namespace ConwaysGameOfLife.Tests
                 Subject.IsTheCellBelowRightAlive(matrixWithOneCell, 0, 0)
                     .ShouldEqual(0);
             }
+
+            [Test]
+            public void It_should_return_true_if_there_is_a_row_above()
+            {
+                Subject.IsThereARowAbove(1).ShouldBeTrue();
+            }
+
+            [Test]
+            public void It_should_return_false_if_there_is_no_row_above()
+            {
+                Subject.IsThereARowAbove(0).ShouldBeFalse();
+            }
+
+            [Test]
+            public void It_should_return_false_if_there_is_no_row_below()
+            {
+                Subject.IsThereARowBelow(new Matrix{Rows= new List<Row>()}, 0);
+            }
+
+            [Test]
+            public void It_should_return_true_if_there_is_a_cell_below()
+            {
+                Subject.IsThereARowBelow(new Matrix {Rows = new List<Row> {new Row(), new Row()}}, 0);
+            }
         }
 
         [TestFixture]
