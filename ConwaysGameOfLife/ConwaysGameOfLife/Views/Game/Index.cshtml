@@ -12,16 +12,22 @@
 </head>
 <body>
 <div class="container-fluid">
-    <a href="/Game/Judge">Judge</a>
-    @foreach (var row in Model.Matrix.Rows)
-    {
-        <div style="margin: 0; padding: 0;">
-            @foreach (var cell in row.Cells)
+    <div class="row">
+        <a href="/Game/Judge">Judge</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var row in Model.Matrix.Rows)
             {
-                <div style="display: inline-block; height: 10px; width: 10px; background-color: @(cell.IsAlive ? "green" : "cyan"); margin: 0; padding: 0;"></div>
+                <div style="margin: 0; padding: 0;">
+                    @foreach (var cell in row.Cells)
+                    {
+                        <div style="background-color: @(cell.IsAlive ? "green" : "cyan"); display: inline-block; height: 10px; margin: 0; padding: 0; width: 10px;"></div>
+                    }
+                </div>
             }
         </div>
-    }
+    </div>
 </div>
 </body>
 </html>
