@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConwaysGameOfLife.Models
+namespace ConwaysGameOfLife.Models.Matrix
 {
     public class Matrix
     {

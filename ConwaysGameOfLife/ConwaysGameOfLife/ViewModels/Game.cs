@@ -1,4 +1,5 @@
 ﻿using ConwaysGameOfLife.Models;
+using ConwaysGameOfLife.Models.Matrix;
 
 namespace ConwaysGameOfLife.ViewModels
 {

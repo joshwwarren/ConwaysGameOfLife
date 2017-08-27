@@ -1,5 +1,6 @@
 ﻿using AutoMoq.Helpers;
 using ConwaysGameOfLife.Models;
+using ConwaysGameOfLife.Models.Matrix;
 using NUnit.Framework;
 using Should;
 

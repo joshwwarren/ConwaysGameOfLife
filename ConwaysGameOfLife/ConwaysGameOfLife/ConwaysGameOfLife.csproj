@@ -147,7 +147,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Game.cs" />
-    <Compile Include="Models\Matrix.cs" />
+    <Compile Include="Models\Matrix\Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
