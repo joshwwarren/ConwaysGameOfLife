@@ -37,17 +37,17 @@ namespace ConwaysGameOfLife.Tests
                 };
             }
 
-            //[TestCase(true, true, true, false, false, false, false, false, true)]
-            //[TestCase(true, true, false, true, false, false, false, false, true)]
-            //[TestCase(true, true, false, false, true, false, false, false, true)]
-            //[TestCase(true, true, false, false, false, true, false, false, true)]
-            //[TestCase(true, true, false, false, false, false, true, false, true)]
-            //[TestCase(true, true, false, false, false, false, false, true, true)]
+            [TestCase(true, true, true, false, false, false, false, false, true)]
+            [TestCase(true, true, false, true, false, false, false, false, true)]
+            [TestCase(true, true, false, false, true, false, false, false, true)]
+            [TestCase(true, true, false, false, false, true, false, false, true)]
+            [TestCase(true, true, false, false, false, false, true, false, true)]
+            [TestCase(true, true, false, false, false, false, false, true, true)]
             [TestCase(true, false, true, false, false, false, false, true, true)]
-            //[TestCase(true, false, false, true, false, false, false, true, true)]
-            //[TestCase(true, false, false, false, true, false, false, true, true)]
-            //[TestCase(true, false, false, false, false, true, false, true, true)]
-            //[TestCase(true, false, false, false, false, false, true, true, true)]
+            [TestCase(true, false, false, true, false, false, false, true, true)]
+            [TestCase(true, false, false, false, true, false, false, true, true)]
+            [TestCase(true, false, false, false, false, true, false, true, true)]
+            [TestCase(true, false, false, false, false, false, true, true, true)]
             public void It_should_judge_cells_with_3_neighbors_live(bool oneone, bool onetwo, bool onethree,
                 bool twoone, bool twothree,
                 bool threeone, bool threetwo, bool threethree,
