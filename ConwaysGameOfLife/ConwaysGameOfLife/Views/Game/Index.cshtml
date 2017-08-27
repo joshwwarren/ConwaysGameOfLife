@@ -1,9 +1,4 @@
 ﻿@model ConwaysGameOfLife.ViewModels.Game
-
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -13,7 +8,9 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <input type="button" href="/Game/Judge" value="Judge"/>
+        <div class="col-md-1">
+            <a class="btn btn-primary btn-lg active" role="button" href="/Game/Judge">Judge</a>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +20,7 @@
                     <tr style="margin: 0; padding: 0;">
                         @foreach (var cell in row.Cells)
                         {
-                            <td style="background-color: @(cell.IsAlive ? "green" : "cyan"); height: 10px; width: 10px;"></td>
+                            <td style="background-color: @(cell.IsAlive ? "green" : "cyan"); height: 10px; width: 10px; border: white 1px solid;"></td>
                         }
                     </tr>
                 }
