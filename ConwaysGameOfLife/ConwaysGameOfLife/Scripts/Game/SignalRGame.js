@@ -1,7 +1,7 @@
 ﻿var life = $.connection.lifeHub;
 
 life.client.hello = function (response) {
-    alert(response);
+    //alert(response);
 }
 
 angular.module('lifeApp', []).controller('lifeController', function($scope, $http) {
@@ -10,6 +10,8 @@ angular.module('lifeApp', []).controller('lifeController', function($scope, $htt
         console.log($scope.matrix);
     }
 
+    $scope.bob = 'foo';
+    $scope.repeaterTest = ["bob", "foo"];
     $scope.judge = function () { life.server.judge($scope.matrix); }
     $scope.startOver = function () { life.server.createMatrix(50); }
 

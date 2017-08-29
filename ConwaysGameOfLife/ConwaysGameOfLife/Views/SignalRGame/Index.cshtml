@@ -14,9 +14,9 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table ng-repeat="row in matrix.Rows">
-                    <tr style="margin: 0; padding: 0;" ng-repeat="cell in row.Cells">
-                        <td ng-style="background-color: cell.IsAlive ? 'green' : 'cyan'; height: 10px; width: 10px; border: white 1px solid;"></td>
+                <table>
+                    <tr style="margin: 0; padding: 0;" ng-repeat="row in matrix.Rows">
+                        <td ng-repeat="cell in row.Cells" ng-style="cell.IsAlive && {'background-color':'green'} || {'background-color':'cyan'}" style="height: 10px; width: 10px; border: white 1px solid;"></td>
                     </tr>
                 </table>
             </div>
