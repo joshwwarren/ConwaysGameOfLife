@@ -3,8 +3,9 @@ angular.module('lifeApp', []).controller('lifeController', function($scope, $htt
     var life = $.connection.lifeHub;
 
     life.client.hello = function (response) {
-        //alert(response);
+        console.log(response);
     }
+
     var scope = $scope;
 
     life.client.pushMatrix = function (matrix) {
