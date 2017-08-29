@@ -1,10 +1,10 @@
-﻿var life = $.connection.lifeHub;
-
-life.client.hello = function (response) {
-    //alert(response);
-}
-
+﻿
 angular.module('lifeApp', []).controller('lifeController', function($scope, $http) {
+    var life = $.connection.lifeHub;
+
+    life.client.hello = function (response) {
+        //alert(response);
+    }
     var scope = $scope;
 
     life.client.pushMatrix = function (matrix) {
@@ -17,7 +17,7 @@ angular.module('lifeApp', []).controller('lifeController', function($scope, $htt
 
     function init() {
         life.server.hello();
-        scope.startOver();//hm, this doesn't work
+        scope.startOver();
     }
 
     $.connection.hub.start().done(init);

@@ -20,11 +20,11 @@ namespace ConwaysGameOfLife.Hubs
         public void Judge(Matrix matrix)
         {
             var newMatrix = new Matrix().JudgeMatrix(matrix);
-            while (newMatrix.Rows.Any(a => a.Cells.Any(c => c.IsAlive)))
-            {
+            //while (newMatrix.Rows.Any(a => a.Cells.Any(c => c.IsAlive)))
+            //{
                 Clients.All.pushMatrix(newMatrix);
-                newMatrix = new Matrix().JudgeMatrix(matrix);
-            }
+            //    newMatrix = new Matrix().JudgeMatrix(matrix);
+            //}
         }
     }
 }
