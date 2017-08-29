@@ -5,20 +5,19 @@ life.client.hello = function (response) {
 }
 
 angular.module('lifeApp', []).controller('lifeController', function($scope, $http) {
+    var scope = $scope;
+
     life.client.pushMatrix = function (matrix) {
-        $scope.matrix = matrix;
-        console.log($scope.matrix);
+        scope.matrix = matrix;
+        console.log(scope.matrix);
     }
 
-    $scope.bob = 'foo';
-    $scope.repeaterTest = ["bob", "foo"];
-    $scope.judge = function () { life.server.judge($scope.matrix); }
-    $scope.startOver = function () { life.server.createMatrix(50); }
+    scope.judge = function () { life.server.judge(scope.matrix); }
+    scope.startOver = function () { life.server.createMatrix(50); }
 
     function init() {
         life.server.hello();
-        $scope.startOver().done(
-            window.setInterval($scope.judge(), 500));//hm, this doesn't work
+        scope.startOver();//hm, this doesn't work
     }
 
     $.connection.hub.start().done(init);
