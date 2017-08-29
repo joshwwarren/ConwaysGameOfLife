@@ -1,8 +1,10 @@
 ﻿var life = $.connection.lifeHub;
 
+life.client.hello = function (response) {
+    alert(response);
+}
+
 function init() {
-    life.hello = function() {
-        alert("hello");
-    }
+    life.server.hello();
 }
 $.connection.hub.start().done(init);
