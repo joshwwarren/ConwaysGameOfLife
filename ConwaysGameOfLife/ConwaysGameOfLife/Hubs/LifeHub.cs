@@ -1,4 +1,5 @@
-﻿using ConwaysGameOfLife.Models.Matrix;
+﻿using System.Linq;
+using ConwaysGameOfLife.Models.Matrix;
 using Microsoft.AspNet.SignalR;
 
 namespace ConwaysGameOfLife.Hubs
@@ -19,7 +20,11 @@ namespace ConwaysGameOfLife.Hubs
         public void Judge(Matrix matrix)
         {
             var newMatrix = new Matrix().JudgeMatrix(matrix);
-            Clients.All.pushMatrix(newMatrix);
+            while (newMatrix.Rows.Any(a => a.Cells.Any(c => c.IsAlive)))
+            {
+                Clients.All.pushMatrix(newMatrix);
+                newMatrix = new Matrix().JudgeMatrix(matrix);
+            }
         }
     }
 }
