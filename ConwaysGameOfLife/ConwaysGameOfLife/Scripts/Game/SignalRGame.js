@@ -7,4 +7,5 @@ life.client.hello = function (response) {
 function init() {
     life.server.hello();
 }
+
 $.connection.hub.start().done(init);
