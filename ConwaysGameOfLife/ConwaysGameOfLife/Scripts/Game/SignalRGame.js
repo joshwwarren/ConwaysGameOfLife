@@ -6,6 +6,15 @@ life.client.hello = function (response) {
 
 function init() {
     life.server.hello();
+    life.server.createMatrix(50);
 }
 
-$.connection.hub.start().done(init);
+
+angular.module('lifeApp', []).controller('lifeController', function($scope, $http) {
+    life.client.pushMatrix = function (matrix) {
+        $scope.matrix = matrix;
+        console.log($scope.matrix);
+    }
+
+    $.connection.hub.start().done(init);
+});
