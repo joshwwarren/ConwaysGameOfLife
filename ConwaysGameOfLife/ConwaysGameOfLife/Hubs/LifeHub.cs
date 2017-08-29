@@ -6,7 +6,7 @@ namespace ConwaysGameOfLife.Hubs
     {
         public void Hello()
         {
-            Clients.All.hello();
+            Clients.All.hello("hello");
         }
     }
 }
