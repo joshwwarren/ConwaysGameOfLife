@@ -17,7 +17,8 @@ angular.module('lifeApp', []).controller('lifeController', function($scope, $htt
 
     function init() {
         life.server.hello();
-        $scope.startOver();
+        $scope.startOver().done(
+            window.setInterval($scope.judge(), 500));//hm, this doesn't work
     }
 
     $.connection.hub.start().done(init);
