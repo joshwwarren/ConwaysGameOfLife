@@ -4,6 +4,22 @@
 <script src="~/Scripts/Game/SignalRGame.js"></script>
 <h2>Signal R Game Of Life</h2>
 
-<div ng-app="lifeApp" ng-controller="lifeController as ctrl">
-
+<div ng-app="lifeApp" ng-controller="lifeController">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 btn-block">
+                <a ng-click="judge" class="btn btn-primary btn-lg active" style="margin: 5px;" role="button" href="#">Judge</a>
+                <a ng-click="startOver" class="btn btn-danger btn-lg active" style="margin: 5px;" role="button" href="#">Start Over</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table>
+                    <tr style="margin: 0; padding: 0;" ng-repeat="row in matrix.Rows">
+                        <td ng-repeat="cell in row.Cells" ng-style="background-color: cell.IsAlive ? 'green' : 'cyan'; height: 10px; width: 10px; border: white 1px solid;"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
