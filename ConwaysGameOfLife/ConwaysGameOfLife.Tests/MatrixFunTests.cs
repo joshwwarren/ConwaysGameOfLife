@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using AutoMoq.Helpers;
-using Castle.Components.DictionaryAdapter;
 using ConwaysGameOfLife.Models.Matrix;
 using NUnit.Framework;
 using Should;
