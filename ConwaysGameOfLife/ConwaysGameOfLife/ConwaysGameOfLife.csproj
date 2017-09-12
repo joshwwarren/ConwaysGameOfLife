@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -166,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\LifeHub.cs" />
+    <Compile Include="Models\Matrix\MatrixFun.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Game.cs" />
     <Compile Include="Models\Matrix\Matrix.cs" />

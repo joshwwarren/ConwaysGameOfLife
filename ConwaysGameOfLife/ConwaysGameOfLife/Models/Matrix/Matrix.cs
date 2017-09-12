@@ -45,7 +45,7 @@ namespace ConwaysGameOfLife.Models.Matrix
             return newMatrix;
         }
 
-        private int CalculateLivingNeighbors(Matrix matrix, Row row, int cellIndex, int rowIndex)
+        public virtual int CalculateLivingNeighbors(Matrix matrix, Row row, int cellIndex, int rowIndex)
         {
             return IsTheCellToTheRightAlive(row, cellIndex) +
                    IsTheCellToTheLeftAlive(row, cellIndex) +
