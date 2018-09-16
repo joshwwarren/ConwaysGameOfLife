@@ -4,7 +4,13 @@ using System.Linq;
 
 namespace ConwaysGameOfLife.Models.Matrix
 {
-    public class Matrix
+    public interface IMatrix
+    {
+        Matrix CreateNewMatrix(int wall);
+        Matrix JudgeMatrix(Matrix matrix);
+    }
+
+    public class Matrix : IMatrix
     {
         private static Random random;
         public List<Row> Rows { get; set; }

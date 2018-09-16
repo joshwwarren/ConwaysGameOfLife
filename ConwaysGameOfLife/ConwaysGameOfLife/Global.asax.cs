@@ -22,7 +22,7 @@ namespace ConwaysGameOfLife
 
             // 2. Configure the container (register)
             // See below for more configuration examples
-            container.Register<Matrix, Matrix>(Lifestyle.Transient);
+            container.Register<IMatrix, Matrix>(Lifestyle.Transient);
             //container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Singleton);
 
             // 3. Optionally verify the container's configuration.

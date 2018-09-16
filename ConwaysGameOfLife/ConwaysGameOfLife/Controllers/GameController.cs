@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using ConwaysGameOfLife.Models;
 using ConwaysGameOfLife.Models.Matrix;
 using ConwaysGameOfLife.ViewModels;
 
@@ -7,9 +6,9 @@ namespace ConwaysGameOfLife.Controllers
 {
     public class GameController : Controller
     {
-        private readonly Matrix matrix;
+        private readonly IMatrix matrix;
 
-        public GameController(Matrix matrix)
+        public GameController(IMatrix matrix)
         {
             this.matrix = matrix;
         }
