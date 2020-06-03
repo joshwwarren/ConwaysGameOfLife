@@ -20,11 +20,10 @@ namespace ConwaysGameOfLife
 
             var container = new Container();
 
-            var registrations =
-                from type in typeof(Game).Assembly.GetExportedTypes()
-                where type.Namespace.StartsWith("ConwaysGameOfLife.Models")
-                where type.GetInterfaces().Any()
-                select new {Service = type.GetInterfaces().FirstOrDefault(), Implementation = type};
+            var registrations = typeof(Game).Assembly.GetExportedTypes()
+                .Where(type => type.Namespace.StartsWith("ConwaysGameOfLife.Models"))
+                .Where(type => type.GetInterfaces().Any())
+                .Select(type => new {Service = type.GetInterfaces().FirstOrDefault(), Implementation = type});
 
             foreach (var reg in registrations)
                 container.Register(reg.Service, reg.Implementation);

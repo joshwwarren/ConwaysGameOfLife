@@ -16,7 +16,9 @@ namespace ConwaysGameOfLife.Controllers
         public ActionResult Index()
         {
             var newMatrix = matrix.CreateNewMatrix(50);
+
             Session.Add("matrix", newMatrix);
+
             return View(new Game {Matrix = newMatrix});
         }
 
